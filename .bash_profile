@@ -1,5 +1,8 @@
 alias ls='ls -la -G'
 
+# prompt color scheme
+export PS1="\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W \[$(tput setaf 4)\]> \[$(tput sgr0)\]"
+
 export XCODE_LOCATION="/Applications/Xcode.app"
 export XCODEBUILD_LOCATION="${XCODE_LOCATION}/Contents/Developer/usr/bin"
 export CODESIGN_ALLOCATE="${XCODE_LOCATION}/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate"
