@@ -40,7 +40,7 @@ function compact() {
     git reset --soft HEAD~1 &&
     git add --all &&
     git commit -m "${name}" &&
-    git push -f ${1:-origin}
+    ( test "$1" = "soft" || git push -f ${1:-origin} )
 }
 
 # starts a rebase against master or continues it, a parameter allows non-master rebases
