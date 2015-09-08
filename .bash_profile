@@ -12,6 +12,9 @@ if [[ -z /usr/bin/codesign_allocate ]]; then
     ln -s "/usr/bin/codesign_allocate" "${XCODE_LOCATION}/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate"
 fi
 
+# certain pods have executable code and cocoapods started applying a restrictive permission
+alias podinstall='pod install && chmod -R 0755 Pods/'
+
 # find a string, first parameter is required (the term), and optional 2nd parameter is the file to limit the search to
 function get() {
     grep -I -r -n "$1" ${2:-.}
