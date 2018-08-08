@@ -48,15 +48,6 @@ function blame() {
     git ls-files -i --exclude=*.h --exclude=*.m -z | xargs -0n1 git blame -w | ruby -n -e '$_ =~ /^.*\((.*?)\s[\d]{4}/; puts $1.strip' | sort -f | uniq -c | sort -n
 }
 
-# takes the current staged and unstaged changes and rolls it into the previous commit, may specify a parameter for the upstream remote to push to
-function compact() {
-    name=`git log -1 --pretty=%B`
-    git reset --soft HEAD~1 &&
-    git add --all &&
-    git commit -m "${name}" &&
-    ( test "$1" = "soft" || git push -f ${1:-origin} )
-}
-
 # starts a rebase against master or continues it, a parameter allows non-master rebases
 function rebase() {
     if [ -a "./.git/rebase-apply" ]; then
